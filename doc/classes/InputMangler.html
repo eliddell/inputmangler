@@ -1,0 +1,537 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Reference</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>ldoc</h1>
+
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#"> </a></li>
+</ul>
+
+
+<h2>Classes</h2>
+<ul class="nowrap">
+  <li><strong>InputMangler</strong></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Class <code>InputMangler</code></h1>
+<p>Maps keyboard/gamepad inputs and modifier keys/buttons to commands.</p>
+<p>
+<p>"modifiers" are keys and/or buttons held down at the same time as the main input is pressed.
+This allows input chords like CTRL+q to be mapped to a different command than just q.
+<p>Mapping may optionally be restricted to a named context (in other words, you can have a "game"
+context, a "paused" context, a "menu" context, etc., and the same key or button will return a
+different command depending on context).</p>
+
+
+<h2><a href="#"> </a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#InputMangler:addContext">InputMangler:addContext (context)</a></td>
+	<td class="summary">Creates a new context.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#InputMangler:delContext">InputMangler:delContext (context)</a></td>
+	<td class="summary">Deletes the named context.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#InputMangler:addModifierKey">InputMangler:addModifierKey (modifier, context)</a></td>
+	<td class="summary">Adds a modifier key to the specified context.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#InputMangler:addModifierButton">InputMangler:addModifierButton (modifier, context)</a></td>
+	<td class="summary">Adds a modifier button to the specified context.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#InputMangler:getModifiers">InputMangler:getModifiers (context)</a></td>
+	<td class="summary">Returns the modifier keys and buttons that are currently being held down.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#InputMangler:isKeyModifier">InputMangler:isKeyModifier (keysym, context)</a></td>
+	<td class="summary">Tests whether or not the given key is a modifier.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#InputMangler:isButtonModifier">InputMangler:isButtonModifier (button, context)</a></td>
+	<td class="summary">Tests whether or not the given button is a modifier.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#InputMangler:addKeyCommand">InputMangler:addKeyCommand (command, keysym, context, modifiers)</a></td>
+	<td class="summary">Adds a key binding to the specified context.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#InputMangler:delKeyCommand">InputMangler:delKeyCommand (keysym, context, modifiers)</a></td>
+	<td class="summary">Removes a key binding from the specified context.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#InputMangler:addButtonCommand">InputMangler:addButtonCommand (command, button, context, modifiers)</a></td>
+	<td class="summary">Adds a button, axis, or arbitrary binding to the specified context.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#InputMangler:delButtonCommand">InputMangler:delButtonCommand (button, context, modifiers)</a></td>
+	<td class="summary">Removes a button, axis, or arbitrary binding from the specified context.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#InputMangler:testButton">InputMangler:testButton (button, context)</a></td>
+	<td class="summary">Returns the command bound to the specified GamepadButton or arbitrary input, taking modifiers into account.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#InputMangler:testKey">InputMangler:testKey (keysym, context)</a></td>
+	<td class="summary">Returns the command bound to the specified KeyConstant, taking modifiers into account.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#InputMangler:saveBindings">InputMangler:saveBindings (filename, rawio)</a></td>
+	<td class="summary">Saves all bindings and modifiers to a file.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#InputMangler:loadBindings">InputMangler:loadBindings (filename, rawio)</a></td>
+	<td class="summary">Loads bindings and modifiers from a file saved with the saveBindings function.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#InputMangler:setJoystick">InputMangler:setJoystick (joystick)</a></td>
+	<td class="summary">Sets the gamepad to test for modifier buttons.</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header "><a name=""></a> </h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "InputMangler:addContext"></a>
+    <strong>InputMangler:addContext (context)</strong>
+    </dt>
+    <dd>
+    Creates a new context.   Warning: If there is already a context named "context", calling this will blank it.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">context</span>
+          name of the new context (string)
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "InputMangler:delContext"></a>
+    <strong>InputMangler:delContext (context)</strong>
+    </dt>
+    <dd>
+    Deletes the named context.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">context</span>
+          name of the context to be deleted (string)
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "InputMangler:addModifierKey"></a>
+    <strong>InputMangler:addModifierKey (modifier, context)</strong>
+    </dt>
+    <dd>
+    Adds a modifier key to the specified context.
+Note:  Adding the same modifier twice won't actually break anything (just slow things down slightly when the keys are tested).
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">modifier</span>
+           a KeyConstant
+        </li>
+        <li><span class="parameter">context</span>
+            name of the context to apply this modifier to (or nil to apply it to the default context)
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "InputMangler:addModifierButton"></a>
+    <strong>InputMangler:addModifierButton (modifier, context)</strong>
+    </dt>
+    <dd>
+    Adds a modifier button to the specified context.
+Note:  Adding the same modifier twice won't actually break anything (just slow things down slightly when the keys are tested).
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">modifier</span>
+           a GamepadButton
+        </li>
+        <li><span class="parameter">context</span>
+            name of the context to apply this modifier to (or nil to apply it to the default context)
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "InputMangler:getModifiers"></a>
+    <strong>InputMangler:getModifiers (context)</strong>
+    </dt>
+    <dd>
+    Returns the modifier keys and buttons that are currently being held down.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">context</span>
+            The name of an existing context (string) containing the modifier list to test.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        list of held modifiers (table containing a mix of KeyConstants and GampabButtons) or nil if no modifiers are being held.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "InputMangler:isKeyModifier"></a>
+    <strong>InputMangler:isKeyModifier (keysym, context)</strong>
+    </dt>
+    <dd>
+    Tests whether or not the given key is a modifier.
+return          True
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">keysym</span>
+           The KeyConstant to test
+        </li>
+        <li><span class="parameter">context</span>
+          The name of an existing context (string) to test this key in (or nil to use the default context)
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "InputMangler:isButtonModifier"></a>
+    <strong>InputMangler:isButtonModifier (button, context)</strong>
+    </dt>
+    <dd>
+    Tests whether or not the given button is a modifier.
+return          True
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">button</span>
+           The GamepadButton, GamepadAxis, or numeric mouse button identifier to test
+        </li>
+        <li><span class="parameter">context</span>
+          The name of an existing context (string) to test this key in (or nil to use the default context)
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "InputMangler:addKeyCommand"></a>
+    <strong>InputMangler:addKeyCommand (command, keysym, context, modifiers)</strong>
+    </dt>
+    <dd>
+    Adds a key binding to the specified context.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">command</span>
+            command name (string)
+        </li>
+        <li><span class="parameter">keysym</span>
+             KeyConstant to bind the command to
+        </li>
+        <li><span class="parameter">context</span>
+            the name of an existing context (string) to place this command in (or nil to use the default context)
+        </li>
+        <li><span class="parameter">modifiers</span>
+          a list of modifier keys or buttons to complete the input chord (or nil for no modifiers)
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "InputMangler:delKeyCommand"></a>
+    <strong>InputMangler:delKeyCommand (keysym, context, modifiers)</strong>
+    </dt>
+    <dd>
+    Removes a key binding from the specified context.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">keysym</span>
+             the KeyConstant to remove
+        </li>
+        <li><span class="parameter">context</span>
+            the name of an existing context (string) to place this command in (or nil to use the default context)
+        </li>
+        <li><span class="parameter">modifiers</span>
+          a list of modifier keys or buttons to complete the input chord (or nil for no modifiers)
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "InputMangler:addButtonCommand"></a>
+    <strong>InputMangler:addButtonCommand (command, button, context, modifiers)</strong>
+    </dt>
+    <dd>
+    Adds a button, axis, or arbitrary binding to the specified context.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">command</span>
+            command name (string)
+        </li>
+        <li><span class="parameter">button</span>
+             a GamepadButton or arbitrary input name (string) to bind the command to
+        </li>
+        <li><span class="parameter">context</span>
+            the name of an existing context (string) to place this command in (or nil to use the default context)
+        </li>
+        <li><span class="parameter">modifiers</span>
+          a list of modifier keys or buttons to complete the input chord (or nil for no modifiers)
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "InputMangler:delButtonCommand"></a>
+    <strong>InputMangler:delButtonCommand (button, context, modifiers)</strong>
+    </dt>
+    <dd>
+    Removes a button, axis, or arbitrary binding from the specified context.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">button</span>
+             a GamepadButton or arbitrary input name (string) to remove
+        </li>
+        <li><span class="parameter">context</span>
+            the name of an existing context (string) to place this command in (or nil to use the default context)
+        </li>
+        <li><span class="parameter">modifiers</span>
+          a list of modifier keys or buttons to complete the input chord (or nil for no modifiers)
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "InputMangler:testButton"></a>
+    <strong>InputMangler:testButton (button, context)</strong>
+    </dt>
+    <dd>
+    Returns the command bound to the specified GamepadButton or arbitrary input, taking modifiers into account.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">button</span>
+           a GamepadButton or arbitrary input name (string) to test
+        </li>
+        <li><span class="parameter">context</span>
+          the name of an existing context (string) to check (or nil to use the default context)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        a command (string) if a mapping for the button exists in the specified context, nil if it doesn't.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "InputMangler:testKey"></a>
+    <strong>InputMangler:testKey (keysym, context)</strong>
+    </dt>
+    <dd>
+    Returns the command bound to the specified KeyConstant, taking modifiers into account.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">keysym</span>
+           a KeyConstant to test
+        </li>
+        <li><span class="parameter">context</span>
+          the name of an existing context (string) to check (or nil to use the default context)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        a command (string) if a mapping for the key exists in the specified context, nil if it doesn't.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "InputMangler:saveBindings"></a>
+    <strong>InputMangler:saveBindings (filename, rawio)</strong>
+    </dt>
+    <dd>
+    Saves all bindings and modifiers to a file.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">filename</span>
+           the name of a file
+        </li>
+        <li><span class="parameter">rawio</span>
+              set to true in order to bypass love.filesystem and use standard Lua io routines.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "InputMangler:loadBindings"></a>
+    <strong>InputMangler:loadBindings (filename, rawio)</strong>
+    </dt>
+    <dd>
+    Loads bindings and modifiers from a file saved with the saveBindings function.   Warning:  this will wipe away any
+modifiers or bindings already in teh system.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">filename</span>
+           the name of a file
+        </li>
+        <li><span class="parameter">rawio</span>
+              set to true in order to bypass love.filesystem and use standard Lua io routines.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "InputMangler:setJoystick"></a>
+    <strong>InputMangler:setJoystick (joystick)</strong>
+    </dt>
+    <dd>
+    Sets the gamepad to test for modifier buttons.
+You only need to call this if you want to test a gamepad other than the one that was love.joysticks.getJoysticks[1]
+when the module was initialized.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">joystick</span>
+           a love.joysticks.Joystick to test for modifier buttons, or nil to not test any
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+<i style="float:right;">Last updated 2017-01-15 16:21:45 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>
